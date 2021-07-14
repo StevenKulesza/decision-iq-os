@@ -1,0 +1,2066 @@
+{
+	"info": {
+		"_postman_id": "f2756d81-c61b-41b8-9ee6-1547a1c5298f",
+		"name": "DCO",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/Businesses/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c3cb52f9-048b-45f0-a745-bbb6806c76ce",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created business\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"businessName\": \"PMTestBusiness\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/businesses/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Businesses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79c81829-6581-4ce3-9959-4ecb5e3d0a99",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of businesses\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/businesses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50d9c74e-cf76-4acb-add8-2421b17754a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created user\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "878be462-32e6-4efe-9cfc-5ef699a2376b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmtest@test.com\",\n\t\"password\": \"PMTestPassword\",\n\t\"businessName\": \"PMTestBusiness\",\n\t\"permissions\": [\"admin\"]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Create (no duplicates)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55e3d7bd-ff76-470d-9521-c4d4e092391c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"API won't create duplicate user\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([409]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmtest@test.com\",\n\t\"password\": \"PMTestPassword\",\n\t\"businessName\": \"PMTestClient\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a28d04dd-e0d2-4929-9c72-898845ebd647",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Get list of users\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f3dbce8-b4ef-4a6b-a728-66a637349049",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User can successfully login\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmtest@test.com\",\n\t\"password\": \"PMTestPassword\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Branded Campaigns\",\n\t\"description\": \"Short description explaining the use of this design in a single sentence\",\n\t\"imageUrl\": \"http://placehold.it/300x250\",\n\t\"sizes\": {\n\t\t\"300x250\":{\n\t\t\t\"height\": 250,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x250\"\n\t\t},\n\t\t\"728x90\":{\n\t\t\t\"height\": 90,\n\t\t\t\"width\": 728,\n\t\t\t\"imageUrl\": \"http://placehold.it/728x90\"\n\t\t},\n\t\t\"160x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 160,\n\t\t\t\"imageUrl\": \"http://placehold.it/160x600\"\n\t\t},\n\t\t\"300x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x600\"\n\t\t}\n\t},\n\t\"template\": {\n\t    \"audience\": {\n\t        \"label\": \"Audience\",\n\t        \"audience_id\": \"audience_a\",\n\t        \"reporting\": \"reporting_var\",\n\t        \"controls\": {\n\t            \"staging\": true,\n\t            \"loyalist\": true,\n\t            \"frame_1\": false,\n\t            \"frame_2\": false,\n\t            \"gallery_arrows\": true\n\t        }\n\t    },\n\t    \"global\": {\n\t        \"template\": \"A\",\n\t        \"images\": {\n\t            \"background\": [\"\", \"\", \"\", \"\", \"\"],\n\t            \"logo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/logo.png\",\n\t            \"image1\": {\n\t                \"loyalist\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_offer.png\",\n\t                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_offer.png\",\n\t                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_offer.png\",\n\t                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_offer.png\",\n\t                    \"\",\n\t                    \"\"\n\t                ],\n\t                \"nonloyalist\": [\"\", \"\", \"\", \"\", \"\"]\n\t            },\n\t            \"gallery\": {\n\t                \"arrow_top\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_top.png\",\n\t                \"arrow_bottom\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_bottom.png\",\n\t                \"arrow_left\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_left.png\",\n\t                \"arrow_right\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_right.png\"\n\t            }\n\t        },\n\t\n\t        \"clicktags\": {\n\t            \"clicktag1\": \"\"\n\t        }\n\t    },\n\t    \"styles\": {\n\t        \"label\": \"Styles\",\n\t        \"header\": {\n\t            \"label\": \"Header\",\n\t            \"background\": {\n\t                \"label\": \"Background\",\n\t                \"type\": \"color\",\n\t                \"value\": \"#000\"\n\t            }\n\t        },\n\t        \"footer\": {\n\t            \"label\": \"Footer\",\n\t            \"background\": {\n\t                \"label\": \"Background\",\n\t                \"type\": \"color\",\n\t                \"value\": \"#000\"\n\t            }\n\t        },\n\t        \"background\": {\n\t            \"label\": \"Background\",\n\t            \"background\": {\n\t                \"label\": \"Background\",\n\t                \"type\": \"color\",\n\t                \"value\": \"#fff\"\n\t            }\n\t        },\n\t        \"cta\": {\n\t            \"label\": \"CTA\",\n\t            \"text\": {\n\t                \"label\": \"Text\",\n\t                \"type\": \"text\",\n\t                \"value\": \"SHOP NOW\"\n\t            },\n\t            \"color\": {\n\t                \"label\": \"Color\",\n\t                \"type\": \"color\",\n\t                \"value\": \"#fff\"\n\t            },\n\t            \"background\": {\n\t                \"label\": \"Background\",\n\t                \"type\": \"color\",\n\t                \"value\": \"#000\"\n\t            },\n\t            \"font_family\": {\n\t                \"label\": \"Font Family\",\n\t                \"type\": \"font\",\n\t                \"value\": \"\"\n\t            },\n\t            \"font_size\": {\n\t                \"label\": \"Font Size\",\n\t                \"type\": \"number\",\n\t                \"value\": \"12\"\n\t            },\n\t            \"font_weight\": {\n\t                \"label\": \"Font Weight\",\n\t                \"type\": \"number\",\n\t                \"value\": \"400\"\n\t            },\n\t            \"letter_spacing\": {\n\t                \"label\": \"Letter Spacing\",\n\t                \"type\": \"number\",\n\t                \"value\": \"0.1\"\n\t            }\n\t        }\n\t    },\n\t    \"frames\": {\n\t        \"label\": \"Frames\",\n\t        \"frame_1\": {\n\t            \"name\": \"\",\n\t            \"prepend\": false,\n\t            \"clicktag\": \"\",\n\t            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_bopus.png\"]\n\t        },\n\t        \"frame_2\": {\n\t            \"name\": \"\",\n\t            \"prepend\": false,\n\t            \"clicktag\": \"\",\n\t            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_y2y.png\"]\n\t        }\n\t    }\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pricing Events\",\n\t\"description\": \"Short description explaining the use of this design in a single sentence\",\n\t\"imageUrl\": \"http://placehold.it/300x250\",\n\t\"sizes\": {\n\t\t\"300x250\":{\n\t\t\t\"height\": 250,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x250\"\n\t\t},\n\t\t\"728x90\":{\n\t\t\t\"height\": 90,\n\t\t\t\"width\": 728,\n\t\t\t\"imageUrl\": \"http://placehold.it/728x90\"\n\t\t},\n\t\t\"160x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 160,\n\t\t\t\"imageUrl\": \"http://placehold.it/160x600\"\n\t\t},\n\t\t\"300x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x600\"\n\t\t}\n\t},\n\t\"template\": {\n    \"audience\": {\n        \"label\": \"Audience\",\n        \"audience_id\": \"audience_b\",\n        \"reporting\": \"reporting_var\",\n        \"controls\": {\n            \"staging\": true,\n            \"loyalist\": true,\n            \"frame_1\": false,\n            \"frame_2\": false,\n            \"gallery_arrows\": true\n        }\n    },\n    \"global\": {\n        \"template\": \"B\",\n        \"images\": {\n            \"background\": [\"\", \"\", \"\", \"\", \"\"],\n            \"logo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/logo.png\",\n            \"image1\": {\n                \"loyalist\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_offer.png\",\n                    \"\",\n                    \"\"\n                ],\n                \"nonloyalist\": [\"\", \"\", \"\", \"\", \"\"]\n            },\n            \"gallery\": {\n                \"arrow_top\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_top.png\",\n                \"arrow_bottom\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_bottom.png\",\n                \"arrow_left\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_left.png\",\n                \"arrow_right\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_right.png\"\n            }\n        },\n\n        \"clicktags\": {\n            \"clicktag1\": \"\"\n        }\n    },\n    \"styles\": {\n        \"label\":\"Styles\",\n        \"header\": {\n            \"label\":\"Header\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"footer\": {\n            \"label\":\"Footer\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"background\": {\n            \"label\":\"Background\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            }\n        },\n        \"cta\": {\n            \"label\":\"CTA\",\n            \"text\":{\n                \"label\":\"Text\",\n                \"type\":\"text\",\n                \"value\":\"SHOP NOW\"\n            },\n            \"color\": {\n                \"label\":\"Color\",\n                \"type\":\"color\",\n                \"value\":\"#fff\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"text\": {\n            \"label\":\"Text\",\n            \"color\": {\n                \"label\": \"Color\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            },\n            \"font_family\": {\n                \"label\": \"Font Family\",\n                \"type\":\"font\",\n                \"value\": \"\"\n            },\n            \"font_size\": {\n                \"label\": \"Font Size\",\n                \"type\":\"number\",\n                \"value\": \"12\"\n            },\n            \"font_weight\": {\n                \"label\": \"Font Weight\",\n                \"type\":\"number\",\n                \"value\": \"400\"\n            },\n            \"letter_spacing\": {\n                \"label\": \"Letter Spacing\",\n                \"type\":\"number\",\n                \"value\": \"0.1\"\n            }\n        },\n        \"price\": {\n            \"label\":\"Price\",\n            \"color\": {\n                \"label\": \"Color\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            },\n            \"font_family\": {\n                \"label\": \"Font Family\",\n                \"type\":\"font\",\n                \"value\": \"\"\n            },\n            \"font_size\": {\n                \"label\": \"Font Size\",\n                \"type\":\"number\",\n                \"value\": \"12\"\n            },\n            \"font_weight\": {\n                \"label\": \"Font Weight\",\n                \"type\":\"number\",\n                \"value\": \"400\"\n            },\n            \"letter_spacing\": {\n                \"label\": \"Letter Spacing\",\n                \"type\":\"number\",\n                \"value\": \"0.1\"\n            }\n        }\n        \n        \n    },\n    \"frames\": {\n        \"label\": \"Frames\",\n        \"frame_1\": {\n            \"name\": \"\",\n            \"prepend\": false,\n            \"clicktag\": \"\",\n            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_bopus.png\"]\n        },\n        \"frame_2\": {\n            \"name\": \"\",\n            \"prepend\": false,\n            \"clicktag\": \"\",\n            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_y2y.png\"]\n        }\n    },\n    \"products\": {\n        \"label\": \"Products\",\n        \"ordered_rotation\": true,\n        \"products\": [{\n            \"product_id\": \"b_epic_090518_both1\",\n            \"lifecycle\": \"Loyalist\",\n            \"brand\": \"The Big One\",\n            \"category\": \"Home\",\n            \"web_id\": 2167111,\n            \"clicktag\": \"\",\n            \"copy1\": \"Copy Line\",\n            \"price\": \"3<sup class='cent'>/$10</sup>\",\n            \"style\": \"\",\n            \"id\": \"both1\",\n            \"division\": \"both\",\n            \"img\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_both1.jpg\",\n            \"img_300x600\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_both1.jpg\",\n            \"img_300x600_geo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_both1_geo.jpg\",\n            \"img_geo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_both1_geo.jpg\"\n        }]\n    }\n}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"General Campaigns\",\n\t\"description\": \"Short description explaining the use of this design in a single sentence\",\n\t\"imageUrl\": \"http://placehold.it/300x250\",\n\t\"sizes\": {\n\t\t\"300x250\":{\n\t\t\t\"height\": 250,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x250\"\n\t\t},\n\t\t\"160x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 160,\n\t\t\t\"imageUrl\": \"http://placehold.it/160x600\"\n\t\t},\n\t\t\"300x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x600\"\n\t\t}\n\t},\n\t\"template\": {\n    \"audience\": {\n        \"label\": \"Audience\",\n        \"audience_id\": \"audience_b\",\n        \"reporting\": \"reporting_var\",\n        \"controls\": {\n            \"staging\": true,\n            \"loyalist\": true,\n            \"frame_1\": false,\n            \"frame_2\": false,\n            \"gallery_arrows\": true\n        }\n    },\n    \"global\": {\n        \"template\": \"B\",\n        \"images\": {\n            \"background\": [\"\", \"\", \"\", \"\", \"\"],\n            \"logo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/logo.png\",\n            \"image1\": {\n                \"loyalist\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_offer.png\",\n                    \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_offer.png\",\n                    \"\",\n                    \"\"\n                ],\n                \"nonloyalist\": [\"\", \"\", \"\", \"\", \"\"]\n            },\n            \"gallery\": {\n                \"arrow_top\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_top.png\",\n                \"arrow_bottom\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_bottom.png\",\n                \"arrow_left\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_left.png\",\n                \"arrow_right\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/arrow_right.png\"\n            }\n        },\n\n        \"clicktags\": {\n            \"clicktag1\": \"\"\n        }\n    },\n    \"styles\": {\n        \"label\":\"Styles\",\n        \"header\": {\n            \"label\":\"Header\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"footer\": {\n            \"label\":\"Footer\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"background\": {\n            \"label\":\"Background\",\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            }\n        },\n        \"cta\": {\n            \"label\":\"CTA\",\n            \"text\":{\n                \"label\":\"Text\",\n                \"type\":\"text\",\n                \"value\":\"SHOP NOW\"\n            },\n            \"color\": {\n                \"label\":\"Color\",\n                \"type\":\"color\",\n                \"value\":\"#fff\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            }\n        },\n        \"text\": {\n            \"label\":\"Text\",\n            \"color\": {\n                \"label\": \"Color\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            },\n            \"font_family\": {\n                \"label\": \"Font Family\",\n                \"type\":\"font\",\n                \"value\": \"\"\n            },\n            \"font_size\": {\n                \"label\": \"Font Size\",\n                \"type\":\"number\",\n                \"value\": \"12\"\n            },\n            \"font_weight\": {\n                \"label\": \"Font Weight\",\n                \"type\":\"number\",\n                \"value\": \"400\"\n            },\n            \"letter_spacing\": {\n                \"label\": \"Letter Spacing\",\n                \"type\":\"number\",\n                \"value\": \"0.1\"\n            }\n        },\n        \"price\": {\n            \"label\":\"Price\",\n            \"color\": {\n                \"label\": \"Color\",\n                \"type\":\"color\",\n                \"value\": \"#000\"\n            },\n            \"background\": {\n                \"label\": \"Background\",\n                \"type\":\"color\",\n                \"value\": \"#fff\"\n            },\n            \"font_family\": {\n                \"label\": \"Font Family\",\n                \"type\":\"font\",\n                \"value\": \"\"\n            },\n            \"font_size\": {\n                \"label\": \"Font Size\",\n                \"type\":\"number\",\n                \"value\": \"12\"\n            },\n            \"font_weight\": {\n                \"label\": \"Font Weight\",\n                \"type\":\"number\",\n                \"value\": \"400\"\n            },\n            \"letter_spacing\": {\n                \"label\": \"Letter Spacing\",\n                \"type\":\"number\",\n                \"value\": \"0.1\"\n            }\n        }\n        \n        \n    },\n    \"frames\": {\n        \"label\": \"Frames\",\n        \"frame_1\": {\n            \"name\": \"\",\n            \"prepend\": false,\n            \"clicktag\": \"\",\n            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_bopus.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_bopus.png\"]\n        },\n        \"frame_2\": {\n            \"name\": \"\",\n            \"prepend\": false,\n            \"clicktag\": \"\",\n            \"img\": [\"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/728x90_b_epic_090518_y2y.jpg\", \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/320x50_b_epic_090518_y2y.png\"]\n        }\n    },\n    \"products\": {\n        \"label\": \"Products\",\n        \"ordered_rotation\": true,\n        \"products\": [{\n            \"product_id\": \"b_epic_090518_both1\",\n            \"lifecycle\": \"Loyalist\",\n            \"brand\": \"The Big One\",\n            \"category\": \"Home\",\n            \"web_id\": 2167111,\n            \"clicktag\": \"\",\n            \"copy1\": \"Copy Line\",\n            \"price\": \"3<sup class='cent'>/$10</sup>\",\n            \"style\": \"\",\n            \"id\": \"both1\",\n            \"division\": \"both\",\n            \"img\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_both1.jpg\",\n            \"img_300x600\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_both1.jpg\",\n            \"img_300x600_geo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x600_b_epic_090518_both1_geo.jpg\",\n            \"img_geo\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_both1_geo.jpg\"\n        }]\n    }\n}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Video Template Test\",\n\t\"description\": \"This video template is a result of a Postman Test\",\n\t\"imageUrl\": \"http://placehold.it/300x300\",\n\t\"sizes\": [\n\t\t{\n\t\t\t\"height\": 300,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x300\"\n\t\t}\t\n\t],\n\t\"template\": {\"test\": \"feed\"}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/video/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video/Create 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Video Template Test 2\",\n\t\"description\": \"This video template is a result of a Postman Test\",\n\t\"imageUrl\": \"http://placehold.it/300x300\",\n\t\"sizes\": [\n\t\t{\n\t\t\t\"height\": 300,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x300\"\n\t\t}\t\n\t],\n\t\"template\": {\"test\": \"feed\"}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/video/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Social/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Social Template Test\",\n\t\"description\": \"This social template is a result of a Postman Test\",\n\t\"imageUrl\": \"http://placehold.it/300x300\",\n\t\"sizes\": [\n\t\t{\n\t\t\t\"height\": 300,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x300\"\n\t\t}\t\n\t],\n\t\"template\": {\"test\": \"feed\"}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/social/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"social",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Email/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Email Template Test\",\n\t\"description\": \"This email template is a result of a Postman Test\",\n\t\"imageUrl\": \"http://placehold.it/300x300\",\n\t\"sizes\": [\n\t\t{\n\t\t\t\"height\": 300,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x300\"\n\t\t}\t\n\t],\n\t\"template\": {\"test\": \"feed\"}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/email/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"email",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/video",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Social",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/social",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"social"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/email",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Blobs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/blobs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"blobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Blobs/container/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82ecff85-1f40-40a6-9d96-f395a1843cd6",
+						"exec": [
+							"var d = new Date().toUTCString();",
+							"postman.setGlobalVariable('timestampUtcIso8601', d);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "image/jpeg"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "x-ms-blob-type",
+						"value": "BlockBlob"
+					},
+					{
+						"key": "x-ms-date",
+						"value": "{{timestampUtcIso8601}}"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{url}}/blobs/container/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"blobs",
+						"container",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Blobs/upload/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82ecff85-1f40-40a6-9d96-f395a1843cd6",
+						"exec": [
+							"var d = new Date().toUTCString();",
+							"postman.setGlobalVariable('timestampUtcIso8601', d);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "image/jpeg"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "x-ms-blob-type",
+						"value": "BlockBlob"
+					},
+					{
+						"key": "x-ms-date",
+						"value": "{{timestampUtcIso8601}}"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{url}}/blobs/upload/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"blobs",
+						"upload",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Blobs/delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82ecff85-1f40-40a6-9d96-f395a1843cd6",
+						"exec": [
+							"var d = new Date().toUTCString();",
+							"postman.setGlobalVariable('timestampUtcIso8601', d);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"blobName\": \"clientName/flightName/300x250.png\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/blobs/delete",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"blobs",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97fa8e68-5991-4099-8f92-175e6a6627b0",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Branded Campaigns\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display 2 (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff9c1e0a-e492-437c-84f9-9bc72ffd7c30",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pricing Events\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display 3 (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff9c1e0a-e492-437c-84f9-9bc72ffd7c30",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"General Campaigns\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ec5f3e1a-2170-4dad-9b49-9e609bcdb2ab",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Video Template Test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/video",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video 2 (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6682b017-68b2-4e55-a287-76e83febf29e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Video Template Test 2\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/video",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Social (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "304de383-d2b1-4bc9-a481-3697c5f27044",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Social Template Test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/social",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"social"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Email (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81e1b38e-aba4-4428-91c2-2df1b257cc7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"PM Email Template Test\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/email",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"email"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Users (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c1422f-7126-46fe-81ee-503ef62cd0fe",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmtest@test.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Businesses (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0d4a3a3-39a7-4250-8355-9b80c4f183fa",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully deleted business\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"businessName\": \"PMTestBusiness\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/businesses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9358fa6-030c-4cfe-baf2-0f7114f0b261",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.environment.set(\"feedId\", JSON.parse(responseBody).feedName);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"feed\":{\"test\":\"test\"},\n\t\"feedName\":\"PMTestFeed\",\n\t\"audienceName\":\"PMTestAudience\",\n\t\"templateType\":\"A\",\n\t\"zipTemplate\":false,\n\t\"writeManifest\": false,\n\t\"templateSizes\": [\"160x600\", \"300x250\", \"300x600\", \"728x90\"]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/feeds/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds",
+						"create"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10fdf713-c350-424b-bc74-606c882d81a9",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/feeds",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds/{feedId}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fadc782-63e0-4793-968d-b2eacbb0aeaf",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"// Check to make sure all keys are present",
+							"pm.test(\"_id is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"_id\");",
+							"});",
+							"",
+							"pm.test(\"feed is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"feed\");",
+							"});",
+							"",
+							"pm.test(\"name is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"name\");",
+							"});",
+							"",
+							"pm.test(\"audienceId is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"audienceId\");",
+							"});",
+							"",
+							"pm.test(\"templateType is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"templateType\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/feeds/{{feedId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds",
+						"{{feedId}}"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds/{feedId}/{audienceId}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "68eb7360-9643-4a0e-a898-e8440ae779b2",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/feeds/{{feedId}}/{{audienceId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds",
+						"{{feedId}}",
+						"{{audienceId}}"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c1422f-7126-46fe-81ee-503ef62cd0fe",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"feedName\": \"PMTestFeed\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/Feeds",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"Feeds"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Files",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10fdf713-c350-424b-bc74-606c882d81a9",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/files",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"files"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Files",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10fdf713-c350-424b-bc74-606c882d81a9",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/files",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"files"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		},
+		{
+			"name": "/Files/{name}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "affd2b9a-3c11-4251-a396-fed74f9785aa",
+						"type": "text/javascript",
+						"exec": [
+							"// Check for content-type",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"// Make sure response time is speedy",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"// Check to make sure all keys are present",
+							"pm.test(\"_id is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"_id\");",
+							"});",
+							"",
+							"pm.test(\"date is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"date\");",
+							"});",
+							"",
+							"pm.test(\"name is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"name\");",
+							"});",
+							"",
+							"pm.test(\"size is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"size\");",
+							"});",
+							"",
+							"pm.test(\"path is present\", function () {",
+							"    pm.response.to.have.jsonBody(\"path\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/files/160x600_nord_ef.jpg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"files",
+						"160x600_nord_ef.jpg"
+					]
+				},
+				"description": "GET - test"
+			},
+			"response": []
+		}
+	]
+}

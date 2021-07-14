@@ -1,0 +1,1444 @@
+{
+    "data": [
+        {
+            "label": "Audience",
+            "audience_id": "all_audiences",
+            "template": "B",
+            "styles": {
+                "label": "Styles",
+                "styles": {
+                    "all_audiences": {
+                        "audience_id": "all_audiences",
+                        "label": "Styles",
+                        "logo": {
+                            "label": "Logo",
+                            "image": {
+                                "label": "Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/logo.png",
+                                "autoSelect": "(?=.*logo).*$",
+                                "imageID": "logo.png"
+                            }
+                        },
+                        "header": {
+                            "label": "Header",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_offer.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*header).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_offer.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*header).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_offer.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*header).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_offer.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*header).*$"
+                            }
+                        },
+                        "footer": {
+                            "label": "Footer",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*footer).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*footer).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*footer).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*footer).*$"
+                            }
+                        },
+                        "background": {
+                            "label": "Background",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*background).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*background).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*background).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*background).*$"
+                            }
+                        },
+                        "gallery": {
+                            "label": "Gallery",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*gallery).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*gallery).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*gallery).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*gallery).*$"
+                            },
+                            "arrow": {
+                                "label": "Arrow",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/arrow.png",
+                                "autoSelect": "(?=.*arrow).*$",
+                                "imageID": "arrow.png"
+                            }
+                        },
+                        "cta": {
+                            "label": "CTA",
+                            "text": {
+                                "label": "Text",
+                                "type": "text",
+                                "value": "SHOP NOW"
+                            },
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#d2232a"
+                            },
+                            "background_image": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "autoSelect": "(?=.*cta).*$"
+                            }
+                        },
+                        "text": {
+                            "label": "Text",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "rgba(255,255,255,0)"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        },
+                        "price": {
+                            "label": "Price",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        }
+                    },
+                    "audience_1": {
+                        "audience_id": "audience_1",
+                        "label": "Styles",
+                        "logo": {
+                            "label": "Logo",
+                            "image": {
+                                "label": "Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/logo.png",
+                                "autoSelect": "(?=.*logo).*$",
+                                "imageID": "logo.png"
+                            }
+                        },
+                        "header": {
+                            "label": "Header",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_offer.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*header).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_offer.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*header).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_offer.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*header).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_offer.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*header).*$"
+                            }
+                        },
+                        "footer": {
+                            "label": "Footer",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*footer).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*footer).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*footer).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*footer).*$"
+                            }
+                        },
+                        "background": {
+                            "label": "Background",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*background).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*background).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*background).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*background).*$"
+                            }
+                        },
+                        "gallery": {
+                            "label": "Gallery",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*gallery).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*gallery).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*gallery).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*gallery).*$"
+                            },
+                            "arrow": {
+                                "label": "Arrow",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/arrow.png",
+                                "autoSelect": "(?=.*arrow).*$",
+                                "imageID": "arrow.png"
+                            }
+                        },
+                        "cta": {
+                            "label": "CTA",
+                            "text": {
+                                "label": "Text",
+                                "type": "text",
+                                "value": "SHOP NOW"
+                            },
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#d2232a"
+                            },
+                            "background_image": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "autoSelect": "(?=.*cta).*$"
+                            }
+                        },
+                        "text": {
+                            "label": "Text",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "rgba(255,255,255,0)"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        },
+                        "price": {
+                            "label": "Price",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        }
+                    },
+                    "audience_2": {
+                        "audience_id": "audience_2",
+                        "label": "Styles",
+                        "logo": {
+                            "label": "Logo",
+                            "image": {
+                                "label": "Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/logo.png",
+                                "autoSelect": "(?=.*logo).*$",
+                                "imageID": "logo.png"
+                            }
+                        },
+                        "header": {
+                            "label": "Header",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_offer.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*header).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_offer.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*header).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_offer.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*header).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_offer.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*header).*$"
+                            }
+                        },
+                        "footer": {
+                            "label": "Footer",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*footer).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*footer).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*footer).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*footer).*$"
+                            }
+                        },
+                        "background": {
+                            "label": "Background",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*background).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*background).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*background).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*background).*$"
+                            }
+                        },
+                        "gallery": {
+                            "label": "Gallery",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*gallery).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*gallery).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*gallery).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*gallery).*$"
+                            },
+                            "arrow": {
+                                "label": "Arrow",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/arrow.png",
+                                "autoSelect": "(?=.*arrow).*$",
+                                "imageID": "arrow.png"
+                            }
+                        },
+                        "cta": {
+                            "label": "CTA",
+                            "text": {
+                                "label": "Text",
+                                "type": "text",
+                                "value": "SHOP NOW"
+                            },
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#d2232a"
+                            },
+                            "background_image": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "autoSelect": "(?=.*cta).*$"
+                            }
+                        },
+                        "text": {
+                            "label": "Text",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "rgba(255,255,255,0)"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        },
+                        "price": {
+                            "label": "Price",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        }
+                    },
+                    "audience_3": {
+                        "audience_id": "audience_3",
+                        "label": "Styles",
+                        "logo": {
+                            "label": "Logo",
+                            "image": {
+                                "label": "Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/logo.png",
+                                "autoSelect": "(?=.*logo).*$",
+                                "imageID": "logo.png"
+                            }
+                        },
+                        "header": {
+                            "label": "Header",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_offer.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*header).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_offer.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*header).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_offer.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*header).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_offer.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*header).*$"
+                            }
+                        },
+                        "footer": {
+                            "label": "Footer",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*footer).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*footer).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*footer).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*footer).*$"
+                            }
+                        },
+                        "background": {
+                            "label": "Background",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*background).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*background).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*background).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*background).*$"
+                            }
+                        },
+                        "gallery": {
+                            "label": "Gallery",
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background_image_300x250": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*gallery).*$"
+                            },
+                            "background_image_160x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*gallery).*$"
+                            },
+                            "background_image_300x600": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*gallery).*$"
+                            },
+                            "background_image_728x90": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*gallery).*$"
+                            },
+                            "arrow": {
+                                "label": "Arrow",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/arrow.png",
+                                "autoSelect": "(?=.*arrow).*$",
+                                "imageID": "arrow.png"
+                            }
+                        },
+                        "cta": {
+                            "label": "CTA",
+                            "text": {
+                                "label": "Text",
+                                "type": "text",
+                                "value": "SHOP NOW"
+                            },
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "#d2232a"
+                            },
+                            "background_image": {
+                                "label": "Background Image",
+                                "type": "image",
+                                "value": "",
+                                "autoSelect": "(?=.*cta).*$"
+                            }
+                        },
+                        "text": {
+                            "label": "Text",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background Color",
+                                "type": "color",
+                                "value": "rgba(255,255,255,0)"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        },
+                        "price": {
+                            "label": "Price",
+                            "color": {
+                                "label": "Color",
+                                "type": "color",
+                                "value": "#000"
+                            },
+                            "background": {
+                                "label": "Background",
+                                "type": "color",
+                                "value": "#fff"
+                            },
+                            "font_family": {
+                                "label": "Font Family",
+                                "type": "font",
+                                "value": ""
+                            },
+                            "font_size": {
+                                "label": "Font Size",
+                                "type": "number",
+                                "value": "12"
+                            },
+                            "font_weight": {
+                                "label": "Font Weight",
+                                "type": "number",
+                                "value": "400"
+                            },
+                            "letter_spacing": {
+                                "label": "Letter Spacing",
+                                "type": "number",
+                                "value": "0.1"
+                            }
+                        }
+                    }
+                }
+            },
+            "frames": {
+                "label": "Frames",
+                "frames": [
+                    {
+                        "name": "bopus",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_bopus.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*bopus).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_bopus.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*bopus).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_bopus.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*bopus).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_bopus.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*bopus).*$",
+                                "imageID": ""
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": false
+                    },
+                    {
+                        "name": "y2y",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_y2y.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*y2y).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_y2y.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*y2y).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_y2y.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*y2y).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_y2y.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*y2y).*$",
+                                "imageID": ""
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": false
+                    },
+                    {
+                        "name": "cash",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_cash.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*cash).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_cash.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*cash).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_cash.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*cash).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_cash.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*cash).*$",
+                                "imageID": ""
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": false
+                    },
+                    {
+                        "name": "gpo",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_gpo.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*gpo).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_gpo.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*gpo).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_gpo.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*gpo).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*gpo).*$",
+                                "imageID": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_gpo.jpg"
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": false
+                    },
+                    {
+                        "name": "ship",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_ship.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*ship).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_ship.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*ship).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_ship.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*ship).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_ship.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*ship).*$",
+                                "imageID": ""
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": false
+                    },
+                    {
+                        "name": "kc",
+                        "clicktag": "http://google.com/",
+                        "image": {
+                            "160x600": {
+                                "label": "160x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/160x600_b_dco_kc_earn.jpg",
+                                "size": "160x600",
+                                "autoSelect": "(?=.*160x600)(?=.*kc).*$",
+                                "imageID": ""
+                            },
+                            "300x250": {
+                                "label": "300x250",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x250_b_dco_kc_earn.jpg",
+                                "size": "300x250",
+                                "autoSelect": "(?=.*300x250)(?=.*kc).*$",
+                                "imageID": ""
+                            },
+                            "300x600": {
+                                "label": "300x600",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/300x600_b_dco_kc_earn.jpg",
+                                "size": "300x600",
+                                "autoSelect": "(?=.*300x600)(?=.*kc).*$",
+                                "imageID": ""
+                            },
+                            "728x90": {
+                                "label": "728x90",
+                                "type": "image",
+                                "value": "http://dev-kohls-feed.moxhost.com/dco/images/728x90_b_dco_kc_earn.jpg",
+                                "size": "728x90",
+                                "autoSelect": "(?=.*728x90)(?=.*kc).*$",
+                                "imageID": ""
+                            }
+                        },
+                        "visible": true,
+                        "evergreen": true
+                    }
+                ]
+            },
+            "products": {
+                "label": "Products",
+                "products": [
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_1",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both1.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$4.00",
+                        "brand": "product_01",
+                        "description": "product description 1",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_2",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both2.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_02",
+                        "description": "product description 2",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_3",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both3.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_03",
+                        "description": "product description 3",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_4",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both4.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_04",
+                        "description": "product description 4",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_5",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both5.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_05",
+                        "description": "product description 5",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_6",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both6.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_06",
+                        "description": "product description 6",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_7",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both7.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_07",
+                        "description": "product description 7",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_8",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both8.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_08",
+                        "description": "product description 8",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_9",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both9.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_09",
+                        "description": "product description 9",
+                        "clicktag": "http://google.com/"
+                    },
+                    {
+                        "id": "",
+                        "division": "",
+                        "weight": 1,
+                        "product_id": "productid_10",
+                        "image": {
+                            "label": "Image",
+                            "type": "image",
+                            "value": "http://dev-kohls-feed.moxhost.com/dco/images/b_dco_both10.jpg",
+                            "imageID": ""
+                        },
+                        "price": "$5.00",
+                        "brand": "product_10",
+                        "description": "product description 10",
+                        "clicktag": "http://google.com/"
+                    }
+                ]
+            }
+        }
+    ]
+}

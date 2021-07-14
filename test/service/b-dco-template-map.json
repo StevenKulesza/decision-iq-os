@@ -1,0 +1,161 @@
+{
+    "audience_id": "",
+    "audience": "",
+    "template": "",
+    "styles": {
+        "all_audiences": {
+            "logo": {
+                "image": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "header": {
+                "background": "",
+                "background_image_300x250": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_160x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_300x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_728x90": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "footer": {
+
+                "background": {
+                    "value": ""
+                },
+                "background_image_300x250": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_160x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_300x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_728x90": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "background": {
+                "background": "",
+                "background_image_300x250": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_160x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_300x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_728x90": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "gallery": {
+                "background": "",
+                "background_image_300x250": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_160x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_300x600": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "background_image_728x90": {
+                    "value": "",
+                    "imageID": ""
+                },
+                "arrow": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "cta": {
+                "text": "",
+                "color": "",
+                "background": "",
+                "background_image": {
+                    "value": "",
+                    "imageID": ""
+                }
+            },
+            "text": {
+                "color": "",
+                "background": "",
+                "font_family": "",
+                "font_size": "",
+                "font_weight": "",
+                "letter_spacing": ""
+            },
+            "price": {
+                "color": "",
+                "background": "",
+                "font_family": "",
+                "font_size": "",
+                "font_weight": "",
+                "letter_spacing": ""
+            }
+        }
+    },
+    "frames": [{
+        "name": "",
+        "clicktag": "",
+        "image": {
+            "160x600": {
+                "value": "",
+                "imageID": ""
+            },
+            "300x250": {
+                "value": "",
+                "imageID": ""
+            },
+            "300x600": {
+                "value": "",
+                "imageID": ""
+            },
+            "728x90": {
+                "value": "",
+                "imageID": ""
+            }
+        },
+        "visible": false,
+        "evergreen": false
+    }],
+    "products": [{
+        "id": "",
+        "division": "",
+        "weight": 1,
+        "product_id": "",
+        "image": {
+            "value": "",
+            "imageID": ""
+        },
+        "price": "",
+        "brand": "",
+        "description": "",
+        "clicktag": ""
+    }]
+}

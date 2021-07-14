@@ -1,0 +1,1041 @@
+{
+	"info": {
+		"_postman_id": "547dedc8-a433-4dba-bd79-d820cc429fbb",
+		"name": "DCO-demo",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/Businesses/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c3cb52f9-048b-45f0-a745-bbb6806c76ce",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created business\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"businessName\": \"Example Company\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/businesses/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Businesses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79c81829-6581-4ce3-9959-4ecb5e3d0a99",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of businesses\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/businesses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50d9c74e-cf76-4acb-add8-2421b17754a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created user\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "878be462-32e6-4efe-9cfc-5ef699a2376b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@examplecompany.com\",\n\t\"password\": \"password\",\n\t\"businessName\": \"Example Company\",\n\t\"permissions\": [\"admin\"]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Create (no duplicates)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55e3d7bd-ff76-470d-9521-c4d4e092391c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"API won't create duplicate user\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([409]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"pmtest@test.com\",\n\t\"password\": \"PMTestPassword\",\n\t\"businessName\": \"PMTestClient\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a28d04dd-e0d2-4929-9c72-898845ebd647",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Get list of users\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "/Users/Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f3dbce8-b4ef-4a6b-a728-66a637349049",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User can successfully login\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							"",
+							"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@examplecompany.com\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Events\",\n\t\"description\": \"Short description explaining the use of this design in a single sentence\",\n\t\"imageUrl\": \"http://placehold.it/300x250\",\n\t\"sizes\": {\n\t\t\"300x250\":{\n\t\t\t\"height\": 250,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x250\"\n\t\t},\n\t\t\"160x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 160,\n\t\t\t\"imageUrl\": \"http://placehold.it/160x600\"\n\t\t},\n\t\t\"300x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x600\"\n\t\t},\n\t\t\"728x90\":{\n\t\t\t\"height\": 90,\n\t\t\t\"width\": 728,\n\t\t\t\"imageUrl\": \"http://placehold.it/728x90\"\n\t\t}\n\t},\n\t\"template\": {\n    \"label\": \"Audience\",\n    \"audience_id\": \"all_audiences\",\n    \"template\": \"A\",\n    \"styles\": {\n        \"label\": \"Styles\",\n        \"styles\": {\n            \"all_audiences\": {\n                \"audience_id\": \"all_audiences\",\n                \"label\": \"Styles\",\n                \"logo\": {\n                    \"label\": \"Logo\",\n                    \"image\": {\n                        \"label\": \"Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"autoSelect\": \"(?=.*logo).*$\"\n                    }\n                },\n                \"header\": {\n                    \"label\": \"Header\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#000\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*header).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*header).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*header).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*header).*$\"\n                    }\n                },\n                \"footer\": {\n                    \"label\": \"Footer\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#000\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*footer).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*footer).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*footer).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*footer).*$\"\n                    }\n                },\n                \"background\": {\n                    \"label\": \"Background\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*background).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*background).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*background).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*background).*$\"\n                    }\n                },\n                \"gallery\": {\n                    \"label\": \"Gallery\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*gallery).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*gallery).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*gallery).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*gallery).*$\"\n                    }\n                },\n                \"cta\": {\n                    \"label\": \"CTA\",\n                    \"text\": {\n                        \"label\": \"Text\",\n                        \"type\": \"text\",\n                        \"value\": \"SHOP NOW\"\n                    },\n                    \"color\": {\n                        \"label\": \"Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#d2232a\"\n                    },\n                    \"background_image\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"autoSelect\": \"(?=.*cta).*$\"\n                    }\n                }\n            }\n        }\n    },\n    \"frames\": {\n        \"label\": \"Frames\",\n        \"frames\": [{\n            \"name\": \"frame 1\",\n            \"clicktag\": \"\",\n            \"image\": {\n                \"160x600\": \"\",\n                \"300x250\": \"\",\n                \"300x600\": \"\",\n                \"728x90\": \"\"\n            },\n            \"visible\": false\n        }]\n    },\n    \"products\": {\n        \"label\": \"Products\",\n        \"products\": []\n    }\n}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pricing Events\",\r\n    \"description\": \"Short description explaining the use of this design in a single sentence\",\r\n    \"type\": \"display\",\r\n    \"imageUrl\": \"https://mpmoxuse2dcocdnsa.blob.core.windows.net/dco-global/b-preview.jpg\",\r\n    \"sizes\": {\r\n        \"300x250\": {\r\n            \"height\": 250,\r\n            \"width\": 300,\r\n            \"imageUrl\": \"https://mpmoxuse2dcocdnsa.blob.core.windows.net/dco-global/a-preview-300x250.jpg\",\r\n            \"active\": true\r\n        },\r\n        \"160x600\": {\r\n            \"height\": 600,\r\n            \"width\": 160,\r\n            \"imageUrl\": \"https://mpmoxuse2dcocdnsa.blob.core.windows.net/dco-global/a-preview-160x600.jpg\",\r\n            \"active\": true\r\n        },\r\n        \"300x600\": {\r\n            \"height\": 600,\r\n            \"width\": 300,\r\n            \"imageUrl\": \"https://mpmoxuse2dcocdnsa.blob.core.windows.net/dco-global/a-preview-300x600.jpg\",\r\n            \"active\": true\r\n        },\r\n        \"728x90\": {\r\n            \"height\": 90,\r\n            \"width\": 728,\r\n            \"imageUrl\": \"https://mpmoxuse2dcocdnsa.blob.core.windows.net/dco-global/a-preview-728x90.jpg\",\r\n            \"active\": true\r\n        }\r\n    },\r\n    \"template\": {\r\n    \"label\": \"Audience\",\r\n    \"audience_id\": \"all_audiences\",\r\n    \"template\": \"B\",\r\n    \"styles\": {\r\n        \"label\": \"Styles\",\r\n        \"styles\": {\r\n            \"all_audiences\" :{\r\n            \"audience_id\": \"all_audiences\",\r\n            \"label\": \"Styles\",\r\n            \"logo\": {\r\n                \"label\": \"Logo\",\r\n                \"image\": {\r\n                    \"label\": \"Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"autoSelect\": \"(?=.*logo).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"header\": {\r\n                \"label\": \"Header\",\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#000\"\r\n                },\r\n                \"background_image_300x250\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x250\",\r\n                    \"autoSelect\": \"(?=.*300x250)(?=.*offer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_160x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"160x600\",\r\n                    \"autoSelect\": \"(?=.*160x600)(?=.*offer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_300x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x600\",\r\n                    \"autoSelect\": \"(?=.*300x600)(?=.*offer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_728x90\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"728x90\",\r\n                    \"autoSelect\": \"(?=.*728x90)(?=.*offer).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"footer\": {\r\n                \"label\": \"Footer\",\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#000\"\r\n                },\r\n                \"background_image_300x250\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x250\",\r\n                    \"autoSelect\": \"(?=.*300x250)(?=.*footer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_160x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"160x600\",\r\n                    \"autoSelect\": \"(?=.*160x600)(?=.*footer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_300x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x600\",\r\n                    \"autoSelect\": \"(?=.*300x600)(?=.*footer).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_728x90\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"728x90\",\r\n                    \"autoSelect\": \"(?=.*728x90)(?=.*footer).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"background\": {\r\n                \"label\": \"Background\",\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#fff\"\r\n                },\r\n                \"background_image_300x250\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x250\",\r\n                    \"autoSelect\": \"(?=.*300x250)(?=.*background).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_160x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"160x600\",\r\n                    \"autoSelect\": \"(?=.*160x600)(?=.*background).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_300x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x600\",\r\n                    \"autoSelect\": \"(?=.*300x600)(?=.*background).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_728x90\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"728x90\",\r\n                    \"autoSelect\": \"(?=.*728x90)(?=.*background).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"gallery\": {\r\n                \"label\": \"Gallery\",\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#fff\"\r\n                },\r\n                \"background_image_300x250\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x250\",\r\n                    \"autoSelect\": \"(?=.*300x250)(?=.*gallery).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_160x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"160x600\",\r\n                    \"autoSelect\": \"(?=.*160x600)(?=.*gallery).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_300x600\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"300x600\",\r\n                    \"autoSelect\": \"(?=.*300x600)(?=.*gallery).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"background_image_728x90\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"size\": \"728x90\",\r\n                    \"autoSelect\": \"(?=.*728x90)(?=.*gallery).*$\",\r\n                \t\"imageID\": \"\"\r\n                },\r\n                \"arrow\": {\r\n                    \"label\": \"Arrow\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"autoSelect\": \"(?=.*arrow).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"cta\": {\r\n                \"label\": \"CTA\",\r\n                \"text\": {\r\n                    \"label\": \"Text\",\r\n                    \"type\": \"text\",\r\n                    \"value\": \"SHOP NOW\"\r\n                },\r\n                \"color\": {\r\n                    \"label\": \"Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#fff\"\r\n                },\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#d2232a\"\r\n                },\r\n                \"background_image\": {\r\n                    \"label\": \"Background Image\",\r\n                    \"type\": \"image\",\r\n                    \"value\": \"\",\r\n                    \"autoSelect\": \"(?=.*cta).*$\",\r\n                \t\"imageID\": \"\"\r\n                }\r\n            },\r\n            \"text\": {\r\n                \"label\": \"Text\",\r\n                \"color\": {\r\n                    \"label\": \"Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#000\"\r\n                },\r\n                \"background\": {\r\n                    \"label\": \"Background Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"rgba(255,255,255,0)\"\r\n                },\r\n                \"font_family\": {\r\n                    \"label\": \"Font Family\",\r\n                    \"type\": \"font\",\r\n                    \"value\": \"\"\r\n                },\r\n                \"font_size\": {\r\n                    \"label\": \"Font Size\",\r\n                    \"type\": \"number\",\r\n                    \"value\": \"12\"\r\n                },\r\n                \"font_weight\": {\r\n                    \"label\": \"Font Weight\",\r\n                    \"type\": \"option\",\r\n                    \"options\": [\"100\", \"200\", \"300\", \"400\", \"500\", \"600\", \"700\", \"800\", \"900\"],\r\n                    \"value\": \"400\"\r\n                },\r\n                \"letter_spacing\": {\r\n                    \"label\": \"Letter Spacing\",\r\n                    \"type\": \"number\",\r\n                    \"value\": \"0.1\"\r\n                }\r\n            },\r\n            \"price\": {\r\n                \"label\": \"Price\",\r\n                \"color\": {\r\n                    \"label\": \"Color\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#000\"\r\n                },\r\n                \"background\": {\r\n                    \"label\": \"Background\",\r\n                    \"type\": \"color\",\r\n                    \"value\": \"#fff\"\r\n                },\r\n                \"font_family\": {\r\n                    \"label\": \"Font Family\",\r\n                    \"type\": \"font\",\r\n                    \"value\": \"\"\r\n                },\r\n                \"font_size\": {\r\n                    \"label\": \"Font Size\",\r\n                    \"type\": \"number\",\r\n                    \"value\": \"12\"\r\n                },\r\n                \"font_weight\": {\r\n                    \"label\": \"Font Weight\",\r\n                    \"type\": \"option\",\r\n                    \"options\": [\"100\", \"200\", \"300\", \"400\", \"500\", \"600\", \"700\", \"800\", \"900\"],\r\n                    \"value\": \"400\"\r\n                },\r\n                \"letter_spacing\": {\r\n                    \"label\": \"Letter Spacing\",\r\n                    \"type\": \"number\",\r\n                    \"value\": \"0.1\"\r\n                }\r\n            }\r\n        }}\r\n    },\r\n    \"frames\": {\r\n        \"label\": \"Frames\",\r\n        \"frames\": [\r\n        \t{\r\n                \"name\": \"bopus\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*bopus).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*bopus).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*bopus).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*bopus).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n            },\r\n            {\r\n                \"name\": \"y2y\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*y2y).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*y2y).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*y2y).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*y2y).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n            },\r\n            {\r\n                \"name\": \"cash\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*cash).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*cash).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*cash).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*cash).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n            },\r\n            {\r\n                \"name\": \"gpo\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*gpo).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*gpo).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*gpo).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*gpo).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n            },\r\n            {\r\n                \"name\": \"ship\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*ship).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*ship).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*ship).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*ship).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n            },\r\n            {\r\n                \"name\": \"kc\",\r\n                \"clicktag\": \"\",\r\n                \"image\": {\r\n                    \"160x600\": {\r\n                    \t\"label\": \"160x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"160x600\",\r\n\t                    \"autoSelect\": \"(?=.*160x600)(?=.*kc).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x250\": {\r\n                    \t\"label\": \"300x250\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x250\",\r\n\t                    \"autoSelect\": \"(?=.*300x250)(?=.*kc).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"300x600\": {\r\n                    \t\"label\": \"300x600\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"300x600\",\r\n\t                    \"autoSelect\": \"(?=.*300x600)(?=.*kc).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    },\r\n                    \"728x90\": {\r\n                    \t\"label\": \"728x90\",\r\n\t                    \"type\": \"image\",\r\n\t                    \"value\": \"\",\r\n\t                    \"size\": \"728x90\",\r\n\t                    \"autoSelect\": \"(?=.*728x90)(?=.*kc).*$\",\r\n                \t\t\"imageID\": \"\"\r\n                    }\r\n                },\r\n                \"visible\": true\r\n        \t}\r\n        ]\r\n    },\r\n    \"products\": {\r\n        \"label\": \"Products\",\r\n        \"products\": []\r\n    }\r\n}\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display/Create 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d475c5eb-0225-442e-a72a-7d04435e30b7",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully created template\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"General Campaigns\",\n\t\"description\": \"Short description explaining the use of this design in a single sentence\",\n\t\"imageUrl\": \"http://placehold.it/300x250\",\n\t\"sizes\": {\n\t\t\"300x250\":{\n\t\t\t\"height\": 250,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x250\"\n\t\t},\n\t\t\"160x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 160,\n\t\t\t\"imageUrl\": \"http://placehold.it/160x600\"\n\t\t},\n\t\t\"300x600\":{\n\t\t\t\"height\": 600,\n\t\t\t\"width\": 300,\n\t\t\t\"imageUrl\": \"http://placehold.it/300x600\"\n\t\t},\n\t\t\"728x90\":{\n\t\t\t\"height\": 90,\n\t\t\t\"width\": 728,\n\t\t\t\"imageUrl\": \"http://placehold.it/728x90\"\n\t\t}\n\t},\n\t\"template\": {\n    \"label\": \"Audience\",\n    \"audience_id\": \"all_audiences\",\n    \"template\": \"A\",\n    \"styles\": {\n        \"label\": \"Styles\",\n        \"styles\": {\n            \"all_audiences\": {\n                \"audience_id\": \"all_audiences\",\n                \"label\": \"Styles\",\n                \"logo\": {\n                    \"label\": \"Logo\",\n                    \"image\": {\n                        \"label\": \"Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"autoSelect\": \"(?=.*logo).*$\"\n                    }\n                },\n                \"header\": {\n                    \"label\": \"Header\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#000\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*header).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*header).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*header).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*header).*$\"\n                    }\n                },\n                \"footer\": {\n                    \"label\": \"Footer\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#000\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*footer).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*footer).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*footer).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*footer).*$\"\n                    }\n                },\n                \"background\": {\n                    \"label\": \"Background\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*background).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*background).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*background).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*background).*$\"\n                    }\n                },\n                \"gallery\": {\n                    \"label\": \"Gallery\",\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background_image_300x250\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x250\",\n                        \"autoSelect\": \"(?=.*300x250)(?=.*gallery).*$\"\n                    },\n                    \"background_image_160x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"160x600\",\n                        \"autoSelect\": \"(?=.*160x600)(?=.*gallery).*$\"\n                    },\n                    \"background_image_300x600\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"300x600\",\n                        \"autoSelect\": \"(?=.*300x600)(?=.*gallery).*$\"\n                    },\n                    \"background_image_728x90\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"size\": \"728x90\",\n                        \"autoSelect\": \"(?=.*728x90)(?=.*gallery).*$\"\n                    }\n                },\n                \"cta\": {\n                    \"label\": \"CTA\",\n                    \"text\": {\n                        \"label\": \"Text\",\n                        \"type\": \"text\",\n                        \"value\": \"SHOP NOW\"\n                    },\n                    \"color\": {\n                        \"label\": \"Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#fff\"\n                    },\n                    \"background\": {\n                        \"label\": \"Background Color\",\n                        \"type\": \"color\",\n                        \"value\": \"#d2232a\"\n                    },\n                    \"background_image\": {\n                        \"label\": \"Background Image\",\n                        \"type\": \"image\",\n                        \"value\": \"\",\n                        \"autoSelect\": \"(?=.*cta).*$\"\n                    }\n                }\n            }\n        }\n    },\n    \"frames\": {\n        \"label\": \"Frames\",\n        \"frames\": [{\n            \"name\": \"frame 1\",\n            \"clicktag\": \"\",\n            \"image\": {\n                \"160x600\": \"\",\n                \"300x250\": \"\",\n                \"300x600\": \"\",\n                \"728x90\": \"\"\n            },\n            \"visible\": false\n        }]\n    },\n    \"products\": {\n        \"label\": \"Products\",\n        \"products\": []\n    }\n}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/email",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Social",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/social",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"social"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Video",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca612183-5a0f-4226-bd0f-d041d7f500ec",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully recieved list of templates\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/templates/video",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"video"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds/Export",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Pricing Events\",\r\n  \"description\": \"Short description explaining the use of this design in a single sentence\",\r\n  \"type\": \"display\",\r\n  \"imageUrl\": \"http://placehold.it/300x250\",\r\n  \"sizes\": {\r\n    \"300x250\": {\r\n      \"height\": 250,\r\n      \"width\": 300,\r\n      \"imageUrl\": \"http://placehold.it/300x250\",\r\n      \"active\": true\r\n    },\r\n    \"160x600\": {\r\n      \"height\": 600,\r\n      \"width\": 160,\r\n      \"imageUrl\": \"http://placehold.it/160x600\",\r\n      \"active\": true\r\n    },\r\n    \"300x600\": {\r\n      \"height\": 600,\r\n      \"width\": 300,\r\n      \"imageUrl\": \"http://placehold.it/300x600\",\r\n      \"active\": true\r\n    },\r\n    \"728x90\": {\r\n      \"height\": 90,\r\n      \"width\": 728,\r\n      \"imageUrl\": \"http://placehold.it/728x90\",\r\n      \"active\": true\r\n    }\r\n  },\r\n  \"template\": {\r\n    \"label\": \"Audience\",\r\n    \"audience_id\": \"b_lps_092618_y2y\",\r\n    \"reporting\": \"reporting_test\",\r\n    \"controls\": {\r\n      \"loyalist\": true,\r\n      \"frames\": {\r\n        \"frame_1\": true,\r\n        \"frame_2\": false,\r\n        \"frame_3\": false,\r\n        \"frame_4\": true\r\n      }\r\n    },\r\n    \"global\": {\r\n      \"template\": \"B\",\r\n      \"images\": {\r\n        \"background\": {\r\n          \"160x600\": \"\",\r\n          \"300x250\": \"\",\r\n          \"300x600\": \"\",\r\n          \"728x90\": \"\"\r\n        },\r\n        \"logo\": \"\",\r\n        \"image1\": {\r\n          \"loyalist\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          },\r\n          \"nonloyalist\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          }\r\n        },\r\n        \"gallery\": {\r\n          \"arrow\": \"\"\r\n        }\r\n      },\r\n      \"clicktags\": {\r\n        \"clicktag1\": \"https://kohls.com/\"\r\n      }\r\n    },\r\n    \"styles\": {\r\n      \"label\": \"Styles\",\r\n      \"header\": {\r\n        \"label\": \"Header\",\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#000\"\r\n        },\r\n        \"background_image\": {\r\n          \"label\": \"Background Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x250\": {\r\n          \"label\": \"Background Image 300x250\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_160x600\": {\r\n          \"label\": \"Background Image 160x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x600\": {\r\n          \"label\": \"Background Image 300x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_728x90\": {\r\n          \"label\": \"Background Image 728x90\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"footer\": {\r\n        \"label\": \"Footer\",\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#000\"\r\n        },\r\n        \"background_image\": {\r\n          \"label\": \"Background Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x250\": {\r\n          \"label\": \"Background Image 300x250\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_160x600\": {\r\n          \"label\": \"Background Image 160x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x600\": {\r\n          \"label\": \"Background Image 300x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_728x90\": {\r\n          \"label\": \"Background Image 728x90\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"background\": {\r\n        \"label\": \"Background\",\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#fff\"\r\n        },\r\n        \"background_image\": {\r\n          \"label\": \"Background Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x250\": {\r\n          \"label\": \"Background Image 300x250\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_160x600\": {\r\n          \"label\": \"Background Image 160x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x600\": {\r\n          \"label\": \"Background Image 300x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_728x90\": {\r\n          \"label\": \"Background Image 728x90\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"gallery\": {\r\n        \"label\": \"Gallery\",\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#fff\"\r\n        },\r\n        \"background_image\": {\r\n          \"label\": \"Background Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x250\": {\r\n          \"label\": \"Background Image 300x250\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_160x600\": {\r\n          \"label\": \"Background Image 160x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_300x600\": {\r\n          \"label\": \"Background Image 300x600\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"background_image_728x90\": {\r\n          \"label\": \"Background Image 728x90\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        },\r\n        \"arrow\": {\r\n          \"label\": \"Arrow\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"logo\": {\r\n        \"label\": \"Logo\",\r\n        \"image\": {\r\n          \"label\": \"Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"cta\": {\r\n        \"label\": \"CTA\",\r\n        \"text\": {\r\n          \"label\": \"Text\",\r\n          \"type\": \"text\",\r\n          \"value\": \"SHOP NOW\"\r\n        },\r\n        \"color\": {\r\n          \"label\": \"Color\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#fff\"\r\n        },\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#d2232a\"\r\n        },\r\n        \"background_image\": {\r\n          \"label\": \"Background Image\",\r\n          \"type\": \"image\",\r\n          \"value\": \"\"\r\n        }\r\n      },\r\n      \"text\": {\r\n        \"label\": \"Text\",\r\n        \"color\": {\r\n          \"label\": \"Color\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#000\"\r\n        },\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#fff\"\r\n        },\r\n        \"font_family\": {\r\n          \"label\": \"Font Family\",\r\n          \"type\": \"font\",\r\n          \"value\": \"\"\r\n        },\r\n        \"font_size\": {\r\n          \"label\": \"Font Size\",\r\n          \"type\": \"number\",\r\n          \"value\": \"12\"\r\n        },\r\n        \"font_weight\": {\r\n          \"label\": \"Font Weight\",\r\n          \"type\": \"number\",\r\n          \"value\": \"400\"\r\n        },\r\n        \"letter_spacing\": {\r\n          \"label\": \"Letter Spacing\",\r\n          \"type\": \"number\",\r\n          \"value\": \"0.1\"\r\n        }\r\n      },\r\n      \"price\": {\r\n        \"label\": \"Price\",\r\n        \"color\": {\r\n          \"label\": \"Color\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#000\"\r\n        },\r\n        \"background\": {\r\n          \"label\": \"Background\",\r\n          \"type\": \"color\",\r\n          \"value\": \"#fff\"\r\n        },\r\n        \"font_family\": {\r\n          \"label\": \"Font Family\",\r\n          \"type\": \"font\",\r\n          \"value\": \"\"\r\n        },\r\n        \"font_size\": {\r\n          \"label\": \"Font Size\",\r\n          \"type\": \"number\",\r\n          \"value\": \"12\"\r\n        },\r\n        \"font_weight\": {\r\n          \"label\": \"Font Weight\",\r\n          \"type\": \"number\",\r\n          \"value\": \"400\"\r\n        },\r\n        \"letter_spacing\": {\r\n          \"label\": \"Letter Spacing\",\r\n          \"type\": \"number\",\r\n          \"value\": \"0.1\"\r\n        }\r\n      }\r\n    },\r\n    \"frames\": {\r\n      \"label\": \"Frames\",\r\n      \"frames\": [\r\n        {\r\n          \"name\": \"bopus\",\r\n          \"clicktag\": \"\",\r\n          \"image\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"y2y\",\r\n          \"clicktag\": \"\",\r\n          \"image\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"cash\",\r\n          \"clicktag\": \"\",\r\n          \"image\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"kc\",\r\n          \"clicktag\": \"\",\r\n          \"image\": {\r\n            \"160x600\": \"\",\r\n            \"300x250\": \"\",\r\n            \"300x600\": \"\",\r\n            \"728x90\": \"\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"products\": {\r\n      \"label\": \"Products\",\r\n      \"products\": []\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/feeds/export?includeFeed=true&includeRichloads=true&includeImages=true",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds",
+						"export"
+					],
+					"query": [
+						{
+							"key": "includeFeed",
+							"value": "true"
+						},
+						{
+							"key": "includeRichloads",
+							"value": "true"
+						},
+						{
+							"key": "includeImages",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Feeds/Export/Images",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pricing Events\",\n  \"description\": \"Short description explaining the use of this design in a single sentence\",\n  \"type\": \"display\",\n  \"imageUrl\": \"http://placehold.it/300x250\",\n  \"sizes\": {\n    \"300x250\": {\n      \"height\": 250,\n      \"width\": 300,\n      \"imageUrl\": \"http://placehold.it/300x250\"\n    },\n    \"160x600\": {\n      \"height\": 600,\n      \"width\": 160,\n      \"imageUrl\": \"http://placehold.it/160x600\"\n    },\n    \"300x600\": {\n      \"height\": 600,\n      \"width\": 300,\n      \"imageUrl\": \"http://placehold.it/300x600\"\n    },\n    \"728x90\": {\n      \"height\": 90,\n      \"width\": 728,\n      \"imageUrl\": \"http://placehold.it/728x90\"\n    }\n  },\n  \"template\": {\n    \"label\": \"Audience\",\n    \"audience_id\": \"b_lps_092618_y2y\",\n    \"reporting\": \"reporting_test\",\n    \"controls\": {\n      \"loyalist\": true,\n      \"frames\": {\n        \"frame_1\": true,\n        \"frame_2\": false,\n        \"frame_3\": false,\n        \"frame_4\": true\n      }\n    },\n    \"global\": {\n      \"template\": \"B\",\n      \"images\": {\n        \"background\": {\n          \"160x600\": \"\",\n          \"300x250\": \"\",\n          \"300x600\": \"\",\n          \"728x90\": \"\"\n        },\n        \"logo\": \"\",\n        \"image1\": {\n          \"loyalist\": {\n            \"160x600\": \"\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          },\n          \"nonloyalist\": {\n            \"160x600\": \"\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          }\n        },\n        \"gallery\": {\n          \"arrow\": \"\"\n        }\n      },\n      \"clicktags\": {\n        \"clicktag1\": \"https://kohls.com/\"\n      }\n    },\n    \"styles\": {\n      \"label\": \"Styles\",\n      \"header\": {\n        \"label\": \"Header\",\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#000\"\n        },\n        \"background_image\": {\n          \"label\": \"Background Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"footer\": {\n        \"label\": \"Footer\",\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#000\"\n        },\n        \"background_image\": {\n          \"label\": \"Background Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"background\": {\n        \"label\": \"Background\",\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#fff\"\n        },\n        \"background_image\": {\n          \"label\": \"Background Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"gallery\": {\n        \"label\": \"Gallery\",\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#fff\"\n        },\n        \"background_image\": {\n          \"label\": \"Background Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        },\n        \"arrow\": {\n          \"label\": \"Arrow\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"logo\": {\n        \"label\": \"Logo\",\n        \"image\": {\n          \"label\": \"Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"cta\": {\n        \"label\": \"CTA\",\n        \"text\": {\n          \"label\": \"Text\",\n          \"type\": \"text\",\n          \"value\": \"SHOP NOW\"\n        },\n        \"color\": {\n          \"label\": \"Color\",\n          \"type\": \"color\",\n          \"value\": \"#fff\"\n        },\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#d2232a\"\n        },\n        \"background_image\": {\n          \"label\": \"Background Image\",\n          \"type\": \"image\",\n          \"value\": \"\"\n        }\n      },\n      \"text\": {\n        \"label\": \"Text\",\n        \"color\": {\n          \"label\": \"Color\",\n          \"type\": \"color\",\n          \"value\": \"#000\"\n        },\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#fff\"\n        },\n        \"font_family\": {\n          \"label\": \"Font Family\",\n          \"type\": \"font\",\n          \"value\": \"\"\n        },\n        \"font_size\": {\n          \"label\": \"Font Size\",\n          \"type\": \"number\",\n          \"value\": \"12\"\n        },\n        \"font_weight\": {\n          \"label\": \"Font Weight\",\n          \"type\": \"number\",\n          \"value\": \"400\"\n        },\n        \"letter_spacing\": {\n          \"label\": \"Letter Spacing\",\n          \"type\": \"number\",\n          \"value\": \"0.1\"\n        }\n      },\n      \"price\": {\n        \"label\": \"Price\",\n        \"color\": {\n          \"label\": \"Color\",\n          \"type\": \"color\",\n          \"value\": \"#000\"\n        },\n        \"background\": {\n          \"label\": \"Background\",\n          \"type\": \"color\",\n          \"value\": \"#fff\"\n        },\n        \"font_family\": {\n          \"label\": \"Font Family\",\n          \"type\": \"font\",\n          \"value\": \"\"\n        },\n        \"font_size\": {\n          \"label\": \"Font Size\",\n          \"type\": \"number\",\n          \"value\": \"12\"\n        },\n        \"font_weight\": {\n          \"label\": \"Font Weight\",\n          \"type\": \"number\",\n          \"value\": \"400\"\n        },\n        \"letter_spacing\": {\n          \"label\": \"Letter Spacing\",\n          \"type\": \"number\",\n          \"value\": \"0.1\"\n        }\n      }\n    },\n    \"frames\": {\n      \"label\": \"Frames\",\n      \"frames\": [\n        {\n          \"name\": \"bopus\",\n          \"clicktag\": \"\",\n          \"image\": {\n            \"160x600\": \"\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          }\n        },\n        {\n          \"name\": \"y2y\",\n          \"clicktag\": \"\",\n          \"image\": {\n            \"160x600\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/300x250_b_epic_090518_offer.png\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          }\n        },\n        {\n          \"name\": \"cash\",\n          \"clicktag\": \"\",\n          \"image\": {\n            \"160x600\": \"\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          }\n        },\n        {\n          \"name\": \"kc\",\n          \"clicktag\": \"\",\n          \"image\": {\n            \"160x600\": \"https://dev-kohls-feed.moxhost.com/images/b_epic_090518/160x600_b_epic_090518_bopus.jpg\",\n            \"300x250\": \"\",\n            \"300x600\": \"\",\n            \"728x90\": \"\"\n          }\n        }\n      ]\n    },\n    \"products\": {\n      \"label\": \"Products\",\n      \"products\": []\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{url}}/feeds/export/images",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"feeds",
+						"export",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Businesses (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0d4a3a3-39a7-4250-8355-9b80c4f183fa",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successfully deleted business\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"businessName\": \"Example Company\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/businesses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"businesses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97fa8e68-5991-4099-8f92-175e6a6627b0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Branded Campaigns\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display 2 (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff9c1e0a-e492-437c-84f9-9bc72ffd7c30",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pricing Events\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Templates/Display 3 (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff9c1e0a-e492-437c-84f9-9bc72ffd7c30",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Template has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"General Campaigns\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/templates/display",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"templates",
+						"display"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		},
+		{
+			"name": "/Users (delete)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c1422f-7126-46fe-81ee-503ef62cd0fe",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been deleted\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@examplecompany.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Delete user by email"
+			},
+			"response": []
+		}
+	]
+}

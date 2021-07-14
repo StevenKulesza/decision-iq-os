@@ -1,0 +1,267 @@
+.b160x600 {
+    font-family: 'lato', sans-serif;
+    position: relative;
+    width: 160px;
+    height: 600px;
+}
+
+.b160x600 .banner {
+    overflow: hidden;
+    width: 158px;
+    height: 598px;
+    border: 1px solid #000;
+}
+
+/*helpers*/
+
+.b160x600 .absolute {
+    position: absolute;
+}
+
+.b160x600 .cover {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    -webkit-background-repeat: no-repeat;
+    -moz-background-repeat: no-repeat;
+    -o-background-repeat: no-repeat;
+    -webkit-background-position: 50%;
+    -moz-background-position: 50%;
+    -o-background-position: 50%;
+}
+
+.b160x600 .contain {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    -webkit-background-repeat: no-repeat;
+    -moz-background-repeat: no-repeat;
+    -o-background-repeat: no-repeat;
+    -webkit-background-position: 50%;
+    -moz-background-position: 50%;
+    -o-background-position: 50%;
+}
+
+.b160x600 .center-bg {
+    background-position: 50%;
+    -webkit-background-position: 50%;
+    -moz-background-position: 50%;
+    -o-background-position: 50%;
+}
+
+.b160x600 .hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+/*container*/
+.b160x600 .banner {
+    overflow: hidden;
+    width: 158px;
+    height: 598px;
+    border: 1px solid #000;
+}
+
+.b160x600 .clicktag-general {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 158px;
+    height: 598px;
+}
+
+.b160x600 .logo {
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 21px;
+}
+
+.b160x600 .header {
+    top: -1px;
+    left: -1px;
+    width: 100%;
+    height: 158px;
+}
+
+.b160x600 .footer {
+  bottom: 0;
+  left: 0;
+  width: 158px;
+  height: 181px;
+}
+
+
+.b160x600 .cta {
+  right: 0;
+  left: 0;
+  bottom: 12px;
+  width: 140px;
+  height: 23px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.b160x600 .text2 {
+    z-index: 1;
+    top: 415px;
+    left: 0;
+    width: 100%;
+    height: 136px;
+}
+
+
+/*gallery*/
+
+.b160x600 .gallery {
+    top: 157px;
+    left: 0;
+    overflow: hidden;
+    width: 156px;
+    height: 261px;
+}
+
+.b160x600 .arrow-left
+{
+    z-index: 110;
+    left: 71px;
+    top: -49px;
+    width: 17px;
+    height: 125px;
+    cursor: pointer;
+    background-size: 66.67%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.b160x600 .arrow-right
+{
+  z-index: 110;
+  left: 71px;
+  width: 17px;
+  height: 125px;
+  cursor: pointer;
+  background-size: 66.67%;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 181px;
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.b160x600 .item-container {
+    position: absolute;
+    overflow: hidden;
+    width: 158px;
+    height: 100%;
+}
+
+.b160x600 .item1 {
+    opacity: 1;
+}
+
+.b160x600 .items {
+    width: 100%;
+    height: 100%;
+}
+
+.b160x600 .items-text-container {
+  z-index: 3;
+  top: 19px;
+  right: 0;
+  left: 11px;
+  display: table;
+  width: 141px;
+  height: 95px;
+}
+
+.b160x600 .vert-align {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.b160x600 .image-item {
+  z-index: 2;
+  top: 114px;
+  right: 0;
+  width: 158px;
+  height: 119px;
+  margin: auto;
+}
+
+/*text*/
+.b160x600 .no-wrap {
+    white-space: nowrap;
+}
+
+.b160x600 .item-price {
+    line-height: 1;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding-right: 2px;
+    text-align: left;
+}
+
+.b160x600 .item-price sup {
+    vertical-align: -.3em;
+}
+
+
+.b160x600 .item-description {
+    font-stretch: normal;
+    line-height: 11px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.b160x600 .item1 {
+    position: absolute;
+}
+
+.b160x600 .item1 .imageItem {
+    top: -1px;
+    right: 0;
+    width: 150px;
+    height: 100%;
+}
+
+/*plus circle*/
+.plus-container {
+    z-index: 10;
+    top: -10px;
+    left: 68px;
+}
+
+.circle {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    -o-border-radius: 50%;
+}
+
+.plus-x {
+    top: 8px;
+    left: 3px;
+    width: 12px;
+    height: 2px;
+    background: #000;
+}
+
+.plus-y {
+    top: 3px;
+    left: 8px;
+    width: 2px;
+    height: 12px;
+    background: #000;
+}
